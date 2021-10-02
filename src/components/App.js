@@ -6,15 +6,26 @@ import Login from "./pages/Login";
 import Quiz from "./pages/Quiz";
 import Result from "./pages/Results";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+
 function App() {
   return (
-    <Layout>
-      {/* <Home /> */}
-      {/* <Signup />
-      <Login /> */}
-      {/* <Quiz /> */}
-      <Result />
-    </Layout>
+    <Router>
+      <Switch>
+        <Layout>
+          <Route exact path="/" component={Home} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/quiz" component={Quiz} />
+          <Route path="/result" component={Result} />
+        </Layout>
+      </Switch>
+    </Router>
   );
 }
 
