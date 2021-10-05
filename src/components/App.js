@@ -11,12 +11,14 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { AuthProvider } from "../contexts/AuthContext";
 
 
 function App() {
   return (
     <Router>
       <Switch>
+        <AuthProvider>
         <Layout>
           <Route exact path="/" component={Home} />
           <Route path="/signup" component={Signup} />
@@ -24,6 +26,7 @@ function App() {
           <Route path="/quiz" component={Quiz} />
           <Route path="/result" component={Result} />
         </Layout>
+        </AuthProvider>
       </Switch>
     </Router>
   );
