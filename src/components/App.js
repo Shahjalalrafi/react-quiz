@@ -12,22 +12,24 @@ import {
   Route
 } from "react-router-dom";
 import { AuthProvider } from "../contexts/AuthContext";
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
 
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <AuthProvider>
+      <AuthProvider>
         <Layout>
-          <Route exact path="/" component={Home} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/quiz" component={Quiz} />
-          <Route path="/result" component={Result} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <PublicRoute exact path="/signup" component={Signup} />
+            <PublicRoute exact path="/login" component={Login} />
+            <PrivateRoute exact path="/quiz" component={Quiz} />
+            <PrivateRoute exact path="/result" component={Result} />
+          </Switch>
         </Layout>
-        </AuthProvider>
-      </Switch>
+      </AuthProvider>
     </Router>
   );
 }
